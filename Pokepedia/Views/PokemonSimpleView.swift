@@ -1,6 +1,7 @@
 import SwiftUI
 
-struct PokemonDetailView: View {
+// Shows one Pokemon
+struct PokemonSimpleView: View {
     let pokemon: Pokemon
     var body: some View {
         VStack {
@@ -38,9 +39,32 @@ struct PokemonDetailView: View {
     }
 }
 
-//struct PokemonDetailView_Previews: PreviewProvider {
-//  static let pokemon = Pokemon(id: 1, name: "Pikachu")
-//static var previews: some View {
-//  PokemonDetailView(pokemon: pokemon)
-//}
+func newPeso(peso : String) -> String {
+    var pesoFormat = peso
+    
+    if peso.count == 1 {
+        pesoFormat.insert(contentsOf: "0.", at: pesoFormat.startIndex)
+    }
+    else if peso.count == 2 {
+        let index = pesoFormat.index(pesoFormat.startIndex, offsetBy: 1)
+        pesoFormat.insert(".", at: index)
+    } else if peso.count == 3 {
+        let index = pesoFormat.index(pesoFormat.startIndex, offsetBy: 2)
+        pesoFormat.insert(".", at: index)
+    } else if peso.count == 4 {
+        let index = pesoFormat.index(pesoFormat.startIndex, offsetBy: 3)
+        pesoFormat.insert(".", at: index)
+    }
+    return pesoFormat
+}
+//struct PokemonSimpleView_Previews: PreviewProvider {
+//    static let pokemon = Pokemon(id: 1,
+//                                 name: "Otaku", weight: 10)
+////                                 ,
+////                          url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png"),
+////                          color: Color.red)
+//
+//    static var previews: some View {
+//        PokemonSimpleView(pokemon: pokemon)
+//    }
 //}
